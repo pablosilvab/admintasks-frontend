@@ -14,6 +14,7 @@ const ListadoProyectos = () => {
 
   return (
     <Fragment>
+      <h2>Tus proyectos</h2>
       <ul className="listado-proyectos">
         {proyectos.map((proyecto) => (
           <Proyecto key={proyecto.id} proyecto={proyecto} />
