@@ -2,9 +2,14 @@ import React, { Fragment, useContext, useState } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 
 const NuevoProyecto = () => {
-  
   const proyectosContext = useContext(proyectoContext);
-  const { formulario, mostrarFormulario } = proyectosContext;
+  const {
+    formulario,
+    errorformulario,
+    mostrarFormulario,
+    agregarProyecto,
+    mostrarError,
+  } = proyectosContext;
 
   const [proyecto, guardarProyecto] = useState({
     nombre: "",
@@ -21,6 +26,16 @@ const NuevoProyecto = () => {
 
   const onSubmitProyecto = (e) => {
     e.preventDefault();
+    if (nombre === "") {
+      mostrarError();
+      return;
+    }
+
+    agregarProyecto(proyecto);
+
+    guardarProyecto({
+      nombre: "",
+    });
   };
 
   return (
@@ -50,6 +65,10 @@ const NuevoProyecto = () => {
             value="Agregar Proyecto"
           />
         </form>
+      ) : null}
+
+      {errorformulario ? (
+        <p className="mensaje error"> El nombre del proyecto es obligatorio.</p>
       ) : null}
     </Fragment>
   );
