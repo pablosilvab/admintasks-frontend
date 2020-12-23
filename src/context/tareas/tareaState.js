@@ -4,6 +4,7 @@ import TareaReducer from "./tareaReducer";
 
 import {
   AGREGAR_TAREA,
+  ELIMINAR_TAREA,
   TAREAS_PROYECTO,
   VALIDAR_TAREA,
 } from "../../types/index";
@@ -11,13 +12,13 @@ import {
 const TareaState = (props) => {
   const initialState = {
     tareas: [
-      { nombre: "Elegir plataforma", estado: true, proyectoId: 1 },
-      { nombre: "Elegir colores", estado: false, proyectoId: 1 },
-      { nombre: "Elegir plataformas de pago", estado: true, proyectoId: 1 },
-      { nombre: "Elegir plataforma", estado: true, proyectoId: 2 },
-      { nombre: "Elegir colores", estado: false, proyectoId: 2 },
-      { nombre: "Elegir proveedor Cloud", estado: true, proyectoId: 3 },
-      { nombre: "Elegir hosting", estado: false, proyectoId: 3 },
+      { id: 1, nombre: "Elegir plataforma", estado: true, proyectoId: 1 },
+      { id: 2, nombre: "Elegir colores", estado: false, proyectoId: 1 },
+      { id: 3, nombre: "Elegir plataformas de pago", estado: true, proyectoId: 1 },
+      { id: 4, nombre: "Elegir plataforma", estado: true, proyectoId: 2 },
+      { id: 5, nombre: "Elegir colores", estado: false, proyectoId: 2 },
+      { id: 6, nombre: "Elegir proveedor Cloud", estado: true, proyectoId: 3 },
+      { id: 7, nombre: "Elegir hosting", estado: false, proyectoId: 3 },
     ],
     tareasproyecto: null,
     errortarea: false,
@@ -45,6 +46,13 @@ const TareaState = (props) => {
     });
   };
 
+  const eliminarTarea = id => {
+    dispatch({
+      type: ELIMINAR_TAREA,
+      payload: id
+    })
+  }
+
   return (
     <TareaContext.Provider
       value={{
@@ -53,7 +61,8 @@ const TareaState = (props) => {
         errortarea: state.errortarea,
         obtenerTareas,
         agregarTarea,
-        validarTarea
+        validarTarea,
+        eliminarTarea
       }}
     >
       {props.children}

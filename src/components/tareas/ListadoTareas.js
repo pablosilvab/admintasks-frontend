@@ -3,7 +3,6 @@ import Tarea from "./Tarea";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 import tareaContext from "../../context/tareas/tareaContext";
 
-
 const ListadoTareas = () => {
   const proyectosContext = useContext(proyectoContext);
   const { proyecto, eliminarProyecto } = proyectosContext;
@@ -30,7 +29,7 @@ const ListadoTareas = () => {
             <p>No hay tareas</p>
           </li>
         ) : (
-          tareasproyecto.map((tarea) => <Tarea tarea={tarea} />)
+          tareasproyecto.map((tarea) => <Tarea key={tarea.id} tarea={tarea} />)
         )}
       </ul>
 
@@ -39,7 +38,7 @@ const ListadoTareas = () => {
         className="btn btn-eliminar"
         onClick={onClickEliminar}
       >
-        Eliminar Proyecto 
+        Eliminar Proyecto
       </button>
     </Fragment>
   );
