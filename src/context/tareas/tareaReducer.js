@@ -3,6 +3,7 @@ import {
   AGREGAR_TAREA,
   ELIMINAR_TAREA,
   ESTADO_TAREA,
+  LIMPIAR_TAREA,
   TAREAS_PROYECTO,
   TAREA_ACTUAL,
   VALIDAR_TAREA,
@@ -45,6 +46,11 @@ export default (state, action) => {
       return {
         ...state,
         tareaseleccionada: action.payload,
+      };
+    case LIMPIAR_TAREA:
+      return {
+        ...state,
+        tareaseleccionada: null,
       };
     default:
       return state;
