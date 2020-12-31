@@ -1,10 +1,15 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
+import AuthContext from "../../context/autenticacion/authContext";
 
 const NuevaCuenta = () => {
   const alertaContext = useContext(AlertaContext);
   const { alerta, mostrarAlerta } = alertaContext;
+
+
+  const authContext = useContext(AuthContext);
+  const { registrarUsuario } = authContext;
 
   const [usuario, guardarUsuario] = useState({
     nombre: "",
@@ -35,7 +40,6 @@ const NuevaCuenta = () => {
     }
 
     if (password.length < 6) {
-
       mostrarAlerta(
         "Password debe ser de al menos 6 caracteres",
         "alerta-error"
@@ -43,11 +47,12 @@ const NuevaCuenta = () => {
       return;
     }
 
-    if (password!==confirmar) {
-
+    if (password !== confirmar) {
       mostrarAlerta("Las contraseñas no coinciden", "alerta-error");
       return;
     }
+
+    registrarUsuario({nombre, email, password})
   };
 
   return (
