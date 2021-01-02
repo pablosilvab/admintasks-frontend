@@ -49,9 +49,9 @@ const AuthState = (props) => {
     if (token) {
       tokenAuth(token);
     }
-
     try {
       const respuesta = await clienteAxios.get("/api/auth");
+      console.log(respuesta);
       dispatch({
         type: OBTENER_USUARIO,
         payload: respuesta.data.usuario,
@@ -64,16 +64,14 @@ const AuthState = (props) => {
   };
 
   const iniciarSesion = async (datos) => {
-    console.log(datos)
     try {
-      const respuesta = await clienteAxios.post('/api/auth', datos)
-      console.log(respuesta)
+      const respuesta = await clienteAxios.post("/api/auth", datos);
+      console.log(respuesta);
 
       dispatch({
         type: LOGIN_EXITO,
-        payload: respuesta.data
+        payload: respuesta.data,
       });
-
       usuarioAutenticado();
     } catch (error) {
       const alerta = {
@@ -96,7 +94,8 @@ const AuthState = (props) => {
         usuario: state.usuario,
         mensaje: state.mensaje,
         registrarUsuario,
-        iniciarSesion
+        iniciarSesion,
+        usuarioAutenticado,
       }}
     >
       {props.children}

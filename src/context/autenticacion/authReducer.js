@@ -9,6 +9,7 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case LOGIN_EXITO:
     case REGISTRO_EXITOSO:
       localStorage.setItem("token", action.payload.token);
       return {
@@ -16,6 +17,7 @@ export default (state, action) => {
         autenticado: true,
         mensaje: null,
       };
+    case LOGIN_ERROR:
     case REGISTRO_ERROR:
       localStorage.removeItem("token");
       return {
@@ -28,14 +30,6 @@ export default (state, action) => {
         ...state,
         usuario: action.payload,
       };
-    case LOGIN_EXITO:
-      return {
-        ...state,
-        autenticado: true,
-        mensaje: null,
-      };
-    case LOGIN_ERROR:
-      return { ...state, token: null, mensaje: action.payload };
     case CERRAR_SESION:
       return {};
     default:
