@@ -47,19 +47,43 @@ const AuthState = (props) => {
   const usuarioAutenticado = async () => {
     const token = localStorage.getItem("token");
     if (token) {
-      tokenAuth(token)
+      tokenAuth(token);
     }
 
     try {
       const respuesta = await clienteAxios.get("/api/auth");
       dispatch({
         type: OBTENER_USUARIO,
-        payload: respuesta.data.usuario
-
-      })
+        payload: respuesta.data.usuario,
+      });
     } catch (error) {
       dispatch({
         type: LOGIN_ERROR,
+      });
+    }
+  };
+
+  const iniciarSesion = async (datos) => {
+    console.log(datos)
+    try {
+      const respuesta = await clienteAxios.post('/api/auth', datos)
+      console.log(respuesta)
+
+      dispatch({
+        type: LOGIN_EXITO,
+        payload: respuesta.data
+      });
+
+      usuarioAutenticado();
+    } catch (error) {
+      const alerta = {
+        msg: error.response.data.msg,
+        categoria: "alerta-error",
+      };
+
+      dispatch({
+        type: LOGIN_ERROR,
+        payload: alerta,
       });
     }
   };
@@ -72,6 +96,7 @@ const AuthState = (props) => {
         usuario: state.usuario,
         mensaje: state.mensaje,
         registrarUsuario,
+        iniciarSesion
       }}
     >
       {props.children}

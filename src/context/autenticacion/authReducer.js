@@ -29,9 +29,13 @@ export default (state, action) => {
         usuario: action.payload,
       };
     case LOGIN_EXITO:
-      return {};
+      return {
+        ...state,
+        autenticado: true,
+        mensaje: null,
+      };
     case LOGIN_ERROR:
-      return {};
+      return { ...state, token: null, mensaje: action.payload };
     case CERRAR_SESION:
       return {};
     default:
