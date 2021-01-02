@@ -92,6 +92,10 @@ a {
   color: #e1e1e1;
 }
 
+.cerrar-sesion{
+  color: #edf2f6;
+}
+
 @media (min-width: 768px) {
   .contenedor-app {
       display: flex;
