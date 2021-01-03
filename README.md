@@ -4,4 +4,23 @@
 
 Proyecto desarrollado en React cuyo objetivo es gestionar proyectos y sus respectivas tareas.
 
+## Instalación
 
+Requisitos:
+
+* Tener instalado Node.js
+* Tener instalado npm
+
+Al clonar el repositorio, tener en cuenta la creación de un archivo .env para leer las variables de entorno del proyecto. 
+
+Luego, instalar las dependencias de npm ejecutando 
+
+```
+npm install
+```
+
+Y para finalizar, ejecutar el proyecto en tu ambiente local con el comando
+
+```
+npm run dev
+```
