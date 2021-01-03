@@ -39,6 +39,7 @@ const FormTarea = () => {
   const [proyectoActual] = proyecto;
 
   const handleChange = (e) => {
+    e.preventDefault();
     guardarTarea({
       ...tarea,
       [e.target.name]: e.target.value,
@@ -55,8 +56,7 @@ const FormTarea = () => {
 
     // check edit or add
     if (tareaseleccionada === null) {
-      tarea.proyectoId = proyectoActual.id;
-      tarea.estado = false;
+      tarea.proyecto = proyectoActual._id;
       agregarTarea(tarea);
     } else {
       actualizarTarea(tarea);
