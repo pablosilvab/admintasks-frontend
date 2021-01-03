@@ -1,16 +1,7 @@
-# Getting Started with Create React App
+# AdminTasks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/77e4d97b-406c-4f2a-8f60-2f88756c3884/deploy-status)](https://app.netlify.com/sites/pensive-benz-37e91f/deploys)
 
-## Available Scripts
+Proyecto desarrollado en React cuyo objetivo es gestionar proyectos y sus respectivas tareas.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
