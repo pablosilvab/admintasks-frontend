@@ -7,7 +7,8 @@ const RutaPrivada = ({ component: Component, ...props }) => {
   const { autenticado, cargando, usuarioAutenticado} = authContext;
 
   useEffect(() => {
-      usuarioAutenticado()
+      usuarioAutenticado();
+       //  eslint-disable-next-line
   }, [])
 
 
