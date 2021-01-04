@@ -24,3 +24,7 @@ Y para finalizar, ejecutar el proyecto en tu ambiente local con el comando
 ```
 npm run dev
 ```
+
+## Notas
+
+El backend de esta aplicación está desarrollado en NodeJs cuyo código se encuentra en [este enlace](https://github.com/pablosilvab/admintasks-backend)
